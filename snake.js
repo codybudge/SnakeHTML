@@ -45,11 +45,11 @@ var snake = {
   },
 
   insert: function (x, y) {
-
+    this._queue.unshit({x:x, y:y});
+    this.last = this._queue[0];
   },
-
   remove: function () {
-
+    return this._queue.pop();
   }
 }
 //TBD :)
