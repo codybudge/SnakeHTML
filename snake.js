@@ -54,7 +54,14 @@ var snake = {
 }
 //TBD :)
 function setFood() {
-
+var empty = [];
+for (var x = 0; x < grid.width; x++) {
+  for( var y = 0; y < grid.height; y++) {
+    if (grid.get(x, y) === EMPTY) {
+      
+    }
+  }
+}
 }
 function main() {
 
