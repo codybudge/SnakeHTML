@@ -100,7 +100,8 @@ function init() {
 grid.init(EMPTY, COLS, ROWS);
 
 var sp = {x:Math.floor(COLS/2), y:ROWS-1};
-snake.init()
+snake.init(UP, sp.x, sp.y);
+grid.set(SNAKE, sp.x, sp.y);
 }
 
 function update() {
