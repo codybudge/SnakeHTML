@@ -1,16 +1,16 @@
 //CONSTANANTS 
 var COLS = 26,
   ROWS = 26;
-  //ID'S
+//ID'S
 var EMPTY = 0,
   SNAKE = 1,
   FRUIT = 2;
-  //DIRECTIONS
+//DIRECTIONS
 var
-LEFT = 0,
-UP = 1,
-RIGHT = 2,
-DOWN = 3
+  LEFT = 0,
+  UP = 1,
+  RIGHT = 2,
+  DOWN = 3
 
 //GRID
 var grid = {
@@ -96,20 +96,49 @@ function main() {
   init();
   loop();
 
-function init() {
-grid.init(EMPTY, COLS, ROWS);
+  function init() {
+    grid.init(EMPTY, COLS, ROWS);
 
-var sp = {x:Math.floor(COLS/2), y:ROWS-1};
-snake.init(UP, sp.x, sp.y);
-grid.set(SNAKE, sp.x, sp.y);
-}
+    var sp = {
+      x: Math.floor(COLS / 2),
+      y: ROWS - 1
+    };
+    snake.init(UP, sp.x, sp.y);
+    grid.set(SNAKE, sp.x, sp.y);
 
-function update() {
+    setFood();
+  }
 
-}
+  function loop() {
+    update();
+    draw();
 
-function draw() {
+    window.requestAnimationFrame(loop, canvas);
+  }
 
-}
+  function update() {
+    frames++;
+  }
 
-main();
+  function draw() {
+    var tw = canvas.width / grid.width;
+    var th = canvas.height / grid.height;
+
+    for (var x = 0; x < grid.width; x++) {
+      for (var y = 0; y < grid.height; y++) {
+            switch (grid.get(x, y)) {
+              case EMPTY:
+              ctx.fillStyle = "#fff";
+              break;
+              case SNAKE:
+              ctx.fillStyle = "#0ff";
+              break;
+              case FRUIT:
+              ctx.fillStyle = "#f00";
+              break;
+            }
+          }
+        }
+      }
+
+        main();
