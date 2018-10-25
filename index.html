@@ -13,26 +13,34 @@
 
   <script>
     //CONSTANANTS 
-    var COLS = 26,
-      ROWS = 26;
-    //ID'S
-    var EMPTY = 0,
-      SNAKE = 1,
-      FRUIT = 2;
-    //DIRECTIONS
     var
-      LEFT = 0,
+      COLS = 26,
+      ROWS = 26,
+    //ID'S
+    EMPTY = 0,
+      SNAKE = 1,
+      FRUIT = 2,
+    //DIRECTIONS
+
+    LEFT = 0,
       UP = 1,
       RIGHT = 2,
-      DOWN = 3
+      DOWN = 3,
     //KEYCODES
-    var KEY_LEFT = 37,
+    KEY_LEFT = 37,
       KEY_UP = 38,
       KEY_RIGHT = 39,
-      KEY_DOWN = 40;
+      KEY_DOWN = 40,
+
+    //GAME OBJECTS
+     canvas,
+      ctx,
+      keystate,
+      frames,
+      score;
 
     //GRID
-    var grid = {
+     grid = {
       width: null,
       height: null,
       _grid: null,
@@ -40,12 +48,11 @@
       init: function (d, c, r) {
         this.width = c;
         this.height = r;
-
         this._grid = [];
         for (var x = 0; x < c; x++) {
           this._grid.push([]);
           for (var y = 0; y < r; y++) {
-            this._grid.push(d);
+            this._grid[x].push(d);
           }
         }
       },
@@ -99,8 +106,6 @@
       grid.set(FRUIT, randpos.x, randpos.y);
     }
 
-    //GAME OBJECTS
-    var canvas, ctx, keystate, frames, score;
 
     //THIS IS THE MAIN GAME RUNNING FUNCTION
     function main() {
