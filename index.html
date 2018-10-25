@@ -94,7 +94,7 @@
           }
         }
       }
-      var randpos = empty[Math.floor(Math.random()(empty.length - 1))];
+      var randpos = empty[Math.floor(Math.random() * (empty.length - 1))];
       grid.set(FRUIT, randpos.x, randpos.y);
     }
 
@@ -112,16 +112,17 @@
       ctx.font = "12px Helvetica";
       frames = 0;
       keystate = {};
+
       document.addEventListener("keydown", function (evt) {
         keystate[evt.keyCode] = true;
       });
       document.addEventListener("keyup", function (evt) {
         delete keystate[evt.keyCode];
       });
+      //STARTS OVER GAME LOOP
+      init();
+      loop();
     }
-    //STARTS OVER GAME LOOP
-    init();
-    loop();
 
     function init() {
       score = 0;
@@ -210,19 +211,19 @@
         for (var y = 0; y < grid.height; y++) {
           switch (grid.get(x, y)) {
             case EMPTY:
-              ctx.fillStyle = "#fff";
+              ctx.fillStyle = "#222";
               break;
             case SNAKE:
-              ctx.fillStyle = "#0ff";
+              ctx.fillStyle = "#8dd67e";
               break;
             case FRUIT:
-              ctx.fillStyle = "#f00";
+              ctx.fillStyle = "#d82c2c";
               break;
           }
           ctx.fillReact(x * tw, y * th, tw, th);
         }
       }
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "#fff";
       ctx.fillText("SCORE:" + score, 10, canvas.height - 10);
     }
     main();
